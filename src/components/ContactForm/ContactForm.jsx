@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { addContact } from '../redux/contactsSlice';
+import { addContactAsync } from '../redux/contactsSlice';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const ContactForm = () => {
       number,
     };
 
-    dispatch(addContact(contact));
+    dispatch(addContactAsync(contact));
 
     setName('');
     setNumber('');

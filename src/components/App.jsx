@@ -1,46 +1,42 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import ContactForm from './ContactForm/ContactForm';
 import './app.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, deleteContact } from './redux/contactsSlice';
 import { setFilter } from './redux/filterSlice';
-
+import {
+  addContactAsync,
+  deleteContactAsync,
+  fetchContactsAsync,
+} from './redux/contactsSlice';
 const App = () => {
-  // const [contacts, setContacts] = useState([]);
-  // const [filter, setFilter] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.contacts || []);
   const filter = useSelector(state => state.filter || '');
 
-  // useEffect(() => {
-  //   const storedContacts = localStorage.getItem('contacts');
-  //   if (storedContacts) {
-  //     setContacts(JSON.parse(storedContacts));
-  //   }
-  // }, [setContacts]);
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
+  useEffect(() => {
+    dispatch(fetchContactsAsync());
+  }, [dispatch]);
 
   const contactExists = newContact =>
     contacts.some(
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
 
-  const handleAddContact = newContact => {
+  const handleAddContact = async newContact => {
     if (contactExists(newContact)) {
       alert('Contact already exists');
     } else {
-      dispatch(addContact(newContact));
+      await dispatch(addContactAsync(newContact));
+      await dispatch(fetchContactsAsync());
       console.log('Updated Contacts:', contacts);
     }
   };
 
-  const handleDeleteContact = deletedContact => {
-    dispatch(deleteContact(deletedContact.id));
+  const handleDeleteContact = async deletedContact => {
+    await dispatch(deleteContactAsync(deletedContact.id));
+    await dispatch(fetchContactsAsync());
   };
 
   const handleFilterChange = filterValue => {
@@ -64,5 +60,5 @@ const App = () => {
     </div>
   );
 };
-// test
+
 export default App;

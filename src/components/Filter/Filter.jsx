@@ -29,7 +29,7 @@ const Filter = ({ filter }) => {
 };
 
 Filter.propTypes = {
-  filter: PropTypes.string.isRequired,
+  filter: PropTypes.array.isRequired,
 };
 
 export default Filter;
