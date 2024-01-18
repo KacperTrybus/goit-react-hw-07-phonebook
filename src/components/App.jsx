@@ -4,12 +4,12 @@ import Filter from './Filter/Filter';
 import ContactForm from './ContactForm/ContactForm';
 import './app.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from './redux/filterSlice';
+import { setFilter } from '../redux/filterSlice';
 import {
   addContactAsync,
   deleteContactAsync,
   fetchContactsAsync,
-} from './redux/contactsSlice';
+} from '../redux/contactsSlice';
 const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.contacts || []);

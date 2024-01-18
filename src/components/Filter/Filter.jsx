@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'components/redux/filterSlice';
+import { setFilter } from '../../redux/filterSlice';
 
 const Filter = ({ filter }) => {
   const dispatch = useDispatch();
