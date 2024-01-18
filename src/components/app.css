@@ -1,0 +1,37 @@
+.wrapper {
+  margin: 50px;
+}
+
+.phonebook-menu {
+  display: flex;
+  border: 1px black solid;
+  flex-direction: column;
+  width: 300px;
+  gap: 20px;
+  margin: 50px 0px;
+  padding: 20px;
+}
+.phonebook-label {
+  font-size: 3rem;
+}
+
+.phonebook-menu input {
+  height: 20px;
+  font-size: 18px;
+}
+
+.phonebook-btn {
+  width: 30%;
+  outline: none;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+}
